@@ -1,0 +1,63 @@
+sql명령어 테이블 컬럼명대로 할 것(소문자면 소문자)
+리눅스는 엄격하기 때문에(윈도우는 관대함)
+
+
+
+cascade delete
+
+
+StudentMapper.java
+@Select("SELECT * FROM student WHERE id = #{id}")
+    Student findOne(int id);
+
+@Select("SELECT * FROM student WHERE studentNumber = #{studentNumber}")
+Student findByStudentNumber(String studentNumber);
+
+@Delete("DELETE FROM student WHERE id = #{id}")
+void delete(int id);
+
+#{id}, #{studentNumber} 부분이 mybatis 파라미터이다.
+메소드를 호출할 때 전달된 파라미터 값이, SQL 문장의 mybatis 파라미터 부분에 채워져서 SQL 문장이 실행된다.
+
+mybatis 파라미터로 전달할 값이 한 개이고,
+값의 타입이 int, long, float, double, boolean 등 기본 자료형이나
+String, Date, Time, Timestamp 클래스 객체인 경우에는 
+위와 같은 방법으로 구현한다.
+
+여기서 Java 파라미터 변수 이름은 중요하지 않다. 
+중요한 것은 파라미터가 한 개이고,
+파라미터 타입이 int, long, float, double, boolean 등 기본 자료형이거나
+String, Date, Time, Timestamp 클래스 중 하나의 객체이어야 한다는 점이다.
+
+
+
+
+mybatis 파라미터: 파라미터 여러 개
+StudentMapper.java
+@Insert("INSERT Student (studentNumber, name, departmentId, year)     " +
+        "VALUES (#{studentNumber}, #{name}, #{departmentId}, #{year}) ")
+@Options(useGeneratedKeys=true, keyProperty="id")
+void insert(Student student);
+
+@Update("UPDATE Student SET                  " +
+        "  studentNumber = #{studentNumber}, " +
+        "  name = #{name},                   " +
+        "  departmentId = #{departmentId},   " +
+        "  year = #{year}                    " +
+        "WHERE id = #{id}                    ")
+void update(Student student);
+
+#{...} 부분이 mybatis 파라미터이다.
+
+여기서 Java 파라미터 변수 이름은 중요하지 않다.
+중요한 것은 Java 파라미터 변수의 타입이 Java 클래스이어야 하고 
+이 클래스의 get 메소드 이름과 mybatis 파라미터의 이름이 일치해야 한다는 점이다.
+
+Student 클래스의 get 메소드	mybatis 파라미터
+getId	#{id}
+getStudentNumber	#{studentNumber}
+getName	#{name}
+getDepartmentId	#{departmentId}
+getYear	#{year}
+
+

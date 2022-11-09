@@ -1,0 +1,5 @@
+package net.skhu.Mapper;
+
+public interface UserMapper {
+
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style type="text/css">
+  
+    div.container {
+      width: 900px;
+      margin: 0 auto;
+    }
+    ul.menubar {
+      border: 1px solid #ddd;
+      border-radius: 0.4em;
+      background: linear-gradient(#fff, #eee);
+      padding: 0.3em 5em;
+      font-size: 11pt;
+    }
+    ul.menubar > li {
+    /* menubar5에선 메뉴3 아래에 나왔던 메뉴가 가로로 나왔단 서식이 >을 줌으로써 
+    세로로 나온다
+    >는 u; class menubar 바로 아래에 있는 li태그만 서식 적용시킴 */
+      display: inline-block;
+      text-align: center;
+      list-style-type: none;
+      min-width: 6em;
+      padding: 0.2em;
+    }
+    ul.menubar li:hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
+    ul.menubar ul {
+      position: absolute;
+      visibility: hidden;
+      margin-top: 2px;
+      margin-left: 30px;
+      background-color: white;
+      border: 1px solid #ddd;
+      padding: 4px;
+      box-shadow: 4px 4px 4px #eee;
+    }
+    ul.menubar li:hover ul {
+      visibility: visible;
+    }
+    ul.menubar ul:hover {
+      visibility: visible;
+    }    
+    ul.menubar ul li {
+    /* 위에 >적용해서 여기서 메뉴 3 아래에 있는 메뉴 서식 적용시키려면
+    여기서 다시 스타일 값을 줘야 함 */
+      display: block;
+      text-align: left;
+      list-style-type: none;
+      min-width: 8em;
+      padding: 0.4em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul class="menubar">
+      <li>메뉴1</li>
+      <li>메뉴2</li>
+      <li>
+        메뉴3
+        <ul>
+          <li>메뉴3-1</li>
+          <li>메뉴3-2</li>
+          <li>메뉴3-3</li>
+        </ul>      
+      <li>로그아웃</li>
+    </ul>
+  </div>
+</body>
+</html>

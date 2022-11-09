@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+             "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.skhu.mapper.RegisterMapper">
+    <!--이름에 주의할 것 RegisterMapper의 xml파일임-->
+
+  <resultMap id="RegisterWithStudentAndCourse" type="net.skhu.dto.Register">
+      <!--이곳도 이름에 주의할 것-->
+      <!--조회 결과를 Register 객체에 채우는 것을 정의함--->
+    <id property="id" column="id" />
+      <!--id는 기본키이므로 id 태그 사용-->
+    <result property="studentId" column="studentId" />
+       <!-- studentId는 기본키가 아니므로 result 태그 사용함-->
+    <result property="courseId" column="courseId" />
+    <result property="grade" column="grade" />
+    <result property="createDate" column="createDate" />
+    <association property="student" javaType="net.skhu.dto.Student">
+      <id property="id" column="studentId" />
+      <result property="studentNumber" column="studentNumber" />
+      <result property="name" column="studentName" />
+    </association>
+    <association property="course" javaType="net.skhu.dto.Course">
+      <id property="id" column="courseId" />
+      <result property="courseName" column="courseName" />
+      <result property="unit" column="unit" />
+    </association>
+  </resultMap>
+
+</mapper>

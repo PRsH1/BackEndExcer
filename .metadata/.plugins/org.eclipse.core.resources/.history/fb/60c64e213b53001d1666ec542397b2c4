@@ -1,0 +1,13 @@
+package net.skhu.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
+import net.skhu.dto.Manager;
+
+public interface ManagerMapper {
+	@Select("SELECT m.* ,p.title from manager m join project p on m.id=p.managerId")
+    List<Manager> findAll();
+
+}

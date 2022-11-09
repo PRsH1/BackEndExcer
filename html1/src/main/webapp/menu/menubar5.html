@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style type="text/css">
+    div.container {
+      width: 900px;
+      margin: 0 auto;
+    }
+    ul.menubar {
+      border: 1px solid #ddd;
+      border-radius: 0.4em;
+      background: linear-gradient(#fff, #eee);
+      padding: 0.3em 5em;
+      font-size: 11pt;
+    }
+    ul.menubar li {
+      display: inline-block;/*inline-block태그를 쓰니 
+      메뉴들이 가로로 나란히 나옴,그 아래에 있는 li태그도 다 나란히 나옴 */
+      list-style-type: none;
+      min-width: 6em;
+      text-align: center;
+      padding: 0.2em;
+    }
+    ul.menubar li:hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
+    ul.menubar ul {
+      position: absolute;
+      visibility: hidden;
+      margin-top: 2px;
+      margin-left: 30px;
+      background-color: white;
+      border: 1px solid #ddd;
+      padding: 0; /*ul태그에는 기본적으로 패딩 있음,그걸 없애줌*/
+      box-shadow: 4px 4px 4px #eee;
+      min-width: 120px;
+    }
+    ul.menubar li:hover ul {
+      visibility: visible;
+    }/* ul.menubar아래에 있는 li태그 아래에 있는 ul태그에 마우스가 hover
+    되어 있을떄 서식을 줘라 */
+    
+    ul.menubar ul:hover {
+      visibility: visible;
+    }
+    /* 윗 코드 ul.menubar li:hover ul {
+      visibility: visible;
+    }과 기능적으로 같음 */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul class="menubar">
+      <li>메뉴1</li>
+      <li>메뉴2</li>
+      <li>
+        메뉴3
+        <ul>
+          <li>메뉴3-1</li>
+          <li>메뉴3-2</li>
+          <li>메뉴3-3</li>
+        </ul>
+      </li>
+      <li>로그아웃</li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+400 bad request error 시
+
+-리퀘스트 파라미터가 액션 메소드 파라미터 변수에 채워져야 하는데 그 과정에 문제가 생겼을 때
+발생
+
+
+Http Status 코드 400 (Bad Request)
+서버에서 에러가 발생했다.
+서버에서 HTTP status 코드 400 (Bad Request) 에러가 발생했다.
+
+400 (Bad Request) 에러는, HTTP Request에 문제가 있을 때 발생한다.
+
+HTTP Request에 문제가 있을 경우에, 웹 서버는 웹브라우저에 
+HTTP status 값이 400 인 HTTP Response를 전송한다.
+
+HTTP status 값이 400 인 HTTP Response를 전달받은 웹브라우저는,
+위 화면과 같은 내용을 웹브라우저 창에 출력한다.
+
+
+Required request parameter 'id' for method parameter type int is not present
+request parameter에 'id' 이름의 데이터가 없어서 발생한 에러이다.
+
+
+
+
+6) URL encoding
+
+
+
+URL에 사용될 수 있는 문자는 다음과 같다.
+숫자, 영어 알파벳, 몇몇 기호 문자
+
+한글 문자는 URL에 사용될 수 없다.
+URL에 사용될 수 없는 문자는 %ED %8F 형태의 16진수로 인코딩(encoding)되어야 한다.
+
+예를 들어 공백(space) 문자는 URL에 사용될 수 없다.
+공백 문자의 ASCII 코드는 32 이다. (16진수로 20)
+URL에서 공백 문자는 %20 형태이어야 한다.
+
+이 URL 인코딩/디코딩은 웹브라우저 웹서버가 자동으로 해주기 때문에,
+많은 경우 프로그래머는 신경쓰지 않아도 된다. (가끔 신경써서 구현해야 하는 경우도 있다.)
+
+예를 들어, 웹브라우저 주소칸에 다음과 같이 입력하면
+http://localhost:8088/first/test1?id=3&name=홍길동
+
+웹브라우저가 이 URL을 아래의 형태로 바꿔서 서버에 요청해 준다.
+http://localhost:8088/first/test1?id=3&name=%ED%99%8D%EA%B8%B8%EB%8F%99
+
+서버에서 request parameter가 변수에 대입될 때, 자동으로 디코딩(decoding)된 값이 대입된다. 
+
+
+
+500에러-id 파라미터를 생략할 수 있지만< @RequestParam("id") int id,@RequestParam("name") String name 에서 @RequestParam ("id")을 생략함)
+null벨류를 int 타입으로 변환하다가 에러가 남(id는 int 타입형 변수이기 떄문에)
+
+해결법 ->Integer(클래스 타입) 으로 바꿔준다 (int id->Integer id)
+
+
+
+
+
+test2행
+
+ @RequestParam(value="id", required=false, defaultValue="0") int id,
+	생략x       id값     값을 생략 가능    아무런 값이 없을떈 default값이 0->int id에 전달
+            @RequestParam(value="name", required=false, defaultValue="nobody") String name)
+					            아무런 값이 없을떈 default값이 nobody->String name에 전달
+
+
+
+
+view 파일의 공유
+
+test1, test2, test3 액션 메소드의 리턴 값이 모두 "first/test1" 이다.
+
+출력할 내용(HTML)이 같은 여러 액션 메소드가 뷰 파일 하나를 공유하는 것이 바람직하다.
+
+뷰 파일의 이름이 액션 메소드의 이름과 같을 필요 없고, 
+request mapping URL과 같을 필요도 없다.
+
+그렇지만, 액션 메소드 이름, request mapping URL, 뷰 파일 이름을 일치시키는 것이
+헷갈리지 않아서 좋다.
+ 
+10) @RequestParam 생략
+
+
+@RequestMapping("test3")
+public String test3(Model model, int id, String name) {
+
+위 코드는 아래 코드와 유사하다.
+
+@RequestMapping("test3")
+public String test1(Model model, @RequestParam("id") int id,
+                                 @RequestParam("name") String name) {
+
+차이점은 다음과 같다.
+  위 코드는 id, name 이름의 request parameter가 없어도,
+     400 Bad request 에러가 발생하지 않고,
+     액션 메소드 파라미터 변수에 null 값이 대입된다.
+
+
+
+옛날 Java에서는 컴파일된 결과 bytecode에서 파라미터 변수와 지역 변수 이름이 제거되었다.
+그래서 파라미터 변수 이름과 일치하는 request parameter를 찾는 것이 가능하지 않아서,
+찾을 이름을 적어주기 위한 @RequestParam 애너테이션이 꼭 필요했다.
+
+Java 8부터는 컴파일된 결과 bytecode에서 파라미터 변수와 지역 변수 이름이 남아있다.
+그래서 파라미터 변수 이름과 일치하는 request parameter를 찾는 것이 가능하다.
+
+서버에서는 아직도 Java 7 이하의 환경을 사용하는 경우가 있다.
+이 경우에 @RequestParam을 생략할 수 없다.
+
+
+1) request paramter 형변환
+
+Sring
+request parameter 값은 기본적으로 문자열 텍스트로 전달된다.
+
+액션 메소드의 파라미터 타입이 String 이라면, 형변환이 필요없다.
+request paramter 값도 문자열이기 때문이다.
+
+기본 자료형
+request paramter 값이 액션 메소드의 파라미터 변수에 대입될 때, 
+파라미터 변수의 타입이 기본자료형(byte, int, long, float, double, boolean, char)이라면,
+자동으로 형변환 된다.
+
+예:
+@RequestParam("weight") double weight
+
+
+기타
+액션 메소드의 파라미터 타입이,
+String도 아니고, 기본 자료형도 아니라면, 즉 객체라면, 
+자동 형변환이 되지 않는다.
+
+
+
+
+root계정 쓰면 감점임

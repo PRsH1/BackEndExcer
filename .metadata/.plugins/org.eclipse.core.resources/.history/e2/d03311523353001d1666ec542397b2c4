@@ -1,0 +1,32 @@
+package net.skhu.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import net.skhu.dto.Engineer;
+
+
+@Mapper
+public interface EngineerMapper {
+
+    @Select("SELECT * FROM engineer WHERE id = #{id}")
+    Engineer findOne(int id);
+
+    @Select("SELECT * FROM engineer WHERE employeeNo = #{employeeNo}")
+    Engineer findByEmpolyeeNo(String employeeNo);
+
+    @Select("SELECT e.*,r.title from engineer e join role r on e.roleId=r.id order by e.id")
+    List<Engineer> findAll();
+ 
+    @Insert("INSERT engineer (employeeNo,name,roleId,phone,sex,email) VALUES (#{employeeNo}, #{name}, #{roleId}, #{phone}, #{sex}, #{email})")
+    void insert(Engineer engineer);
+   
+    void update(Student student);
+
+    @Delete("DELETE FROM employee WHERE id = #{id}")
+    void delete(int id);
+}

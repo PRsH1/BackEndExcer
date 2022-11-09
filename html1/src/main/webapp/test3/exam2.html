@@ -1,0 +1,39 @@
+<?php
+  $color = $_POST['color']; 
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+	select {
+	width:150px;
+	height: 30px;
+
+	}
+	input { 
+	height:30px;
+	width: 80px;
+	}
+
+</style>
+</head>
+<body>
+
+<form method="post" action="form-action.php">
+  
+      <select name="color">
+          <option value="yellow">yellow</option>
+          <option value="green">green</option>
+          <option value="red">red</option>
+          <option value="blue">blue</option>
+      </select>
+      <input type="submit" value="확인">
+      <p>color: <?php echo $color ?></p>
+        
+  
+</form>
+
+
+</body>
+</html>
