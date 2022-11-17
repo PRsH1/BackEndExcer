@@ -10,4 +10,6 @@ public class Form1 {
     int[] departmentId4;
     int[] departmentId5;
     boolean enabled;
+    //view에서 왔다갔다하는것들
+    
 }

@@ -12,4 +12,5 @@ public class User {
     boolean enabled;
     String userType;
     Integer departmentId;
+    //null값이 가능한 필드 따라서 Integer타입의 속성 부여
 }

@@ -19,6 +19,7 @@
 <body>
 <div class="container">
   <form:form method="post" modelAttribute="form1">
+   <!-- modelAttribute의 이름은 model객체(net.skhu.model)의 이름과 같아야 한다 (camelCase지킬것) -->
     <div>
         <form:select path="departmentId1" itemValue="id" itemLabel="name" items="${ departments }" />
     </div>

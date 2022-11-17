@@ -19,6 +19,7 @@ public class Form1Controller {
     @ModelAttribute
     public void addSomething(Model model) {
         model.addAttribute("departments", departmentMapper.findAll());
+      //이 문장은 이 컨트롤러의 모든 메소드에서 작동한다
     }
 
     @GetMapping("form1/edit1")

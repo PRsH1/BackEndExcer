@@ -1,0 +1,1 @@
+mysql -p -u root < Downloads\student2.sql

@@ -4,4 +4,10 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="net.skhu.mapper.ProjectMapper"/>
+    <fullyQualifiedTypeName name="net.skhu.model.BookModel"/>
+    <fullyQualifiedTypeName name="net.skhu.dto.Book"/>
+    <fullyQualifiedTypeName name="net.skhu.mapper.BookCategoryMapper"/>
+    <fullyQualifiedTypeName name="net.skhu.model.Bmodel"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="org.springframework.validation.BindingResult"/>
 </qualifiedTypeNameHistroy>
