@@ -25,9 +25,12 @@ public class UserController {
     @Autowired UserService userService;
     @Autowired DepartmentService departmentService;
 
-    @GetMapping("list")
+    @RequestMapping("list")
     public String list(Model model) {
-        model.addAttribute("users", userService.findAll());
+    	List<User> users=userService.findAll();
+        model.addAttribute("users", users);
+  
+     
         return "user/list";
     }
 

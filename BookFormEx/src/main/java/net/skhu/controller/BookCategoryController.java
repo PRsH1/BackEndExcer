@@ -34,6 +34,28 @@ public class BookCategoryController {
     	
         return "category/edit1";
     }
+    @GetMapping("category/edit2")
+    public String edit2(Model model) {
+        model.addAttribute("bmodel", new Bmodel());
+        return "category/edit2";
+    }
+
+    @PostMapping("category/edit2")
+    public String edit2(Model model, Bmodel bmodel) {
+        return "category/edit2";
+    }
+    @GetMapping("category/edit3")
+    public String edit3(Model model) {
+        model.addAttribute("bmodel", new Bmodel());
+        return "category/edit3";
+    }
+
+    @PostMapping("category/edit3")
+    public String edit3(Model model, Bmodel bmodel) {
+        return "category/edit3";
+    }
+
+
 
 
 

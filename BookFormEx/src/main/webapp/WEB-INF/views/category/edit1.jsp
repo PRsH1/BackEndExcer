@@ -31,7 +31,7 @@
     </div>
     <div>
         <form:select path="categoryId3">
-          <form:option value="0" label="학과를 선택하세요" />
+          <form:option value="0" label="카테고리를 선택하세요" />
           <form:option value="1" label="소설" />
           <form:option value="2" label="수필" />
           <form:option value="3" label="경제" />
@@ -44,9 +44,10 @@
   </form:form>  
   
   <ul>
-    <li>categoryId1 : ${ Bmodel.categoryId1 }</li>  
-    <li>categoryId2 : ${ Bmodel.categoryId2 }</li>  
-    <li>categoryId3 : ${ Bmodel.category1d3 }</li>  
+    <li>categoryId1 : ${ bmodel.categoryId1 }</li>  
+    <li>categoryId2 : ${ bmodel.categoryId2 }</li>  
+    <li>categoryId3 : ${ bmodel.categoryId3 }</li>  
+    <!-- model class가 Bmodel이므로 이곳에선 bmodel로 적을 것 -->
   </ul>  
 </div>
 </body>
