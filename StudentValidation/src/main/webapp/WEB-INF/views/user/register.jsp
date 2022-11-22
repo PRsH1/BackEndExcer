@@ -47,6 +47,7 @@
       <form:select path="departmentId">
         <form:option value="0">학과를 선택하세요</form:option>
         <form:options itemValue="id" itemLabel="departmentName" items="${ departments }" />
+        <form:errors path="departmentId" class="error" />
       </form:select>
     </div>
     <button type="submit" class="btn">회원가입</button>

@@ -1,6 +1,7 @@
 package net.skhu.model;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -30,5 +31,6 @@ public class UserRegister {
     @Email(message="이메일 주소가 올바르지 않습니다")
     String email;
 
+    @Min(value=1)
     int departmentId;
 }

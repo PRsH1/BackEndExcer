@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import net.skhu.dto.Department;
+import net.skhu.dto.User;
 import net.skhu.mapper.DepartmentMapper;
+import net.skhu.model.UserRegister;
 
 @Service
 public class DepartmentService {
@@ -18,5 +21,7 @@ public class DepartmentService {
     public List<Department> findAll() {
         return departmentMapper.findAll();
     }
+ 
+
 
 }

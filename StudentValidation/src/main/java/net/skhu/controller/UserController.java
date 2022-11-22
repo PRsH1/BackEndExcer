@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import net.skhu.dto.Department;
 import net.skhu.dto.User;
 import net.skhu.model.UserRegister;
 import net.skhu.service.DepartmentService;
@@ -28,7 +29,9 @@ public class UserController {
     @RequestMapping("list")
     public String list(Model model) {
     	List<User> users=userService.findAll();
+    	
         model.addAttribute("users", users);
+      
   
      
         return "user/list";
@@ -53,9 +56,10 @@ public class UserController {
     }
 
     @GetMapping("edit")
-    public String edit(Model model ,@RequestParam("id")String id) {
+    public String edit(Model model ,@RequestParam("id") int id) {
     
     	
+    	model.addAttribute("userRegister", new UserRegister());
         model.addAttribute("departments", departmentService.findAll());
         return "user/edit";
     }

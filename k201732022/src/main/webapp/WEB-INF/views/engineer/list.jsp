@@ -15,32 +15,30 @@
 </head>
 <body>
 <div class="container">
-  <h1>학생 목록</h1>
-  <a href="register" class="btn">회원 등록</a>
+  <h1>엔지니어 목록</h1>
+  <a href="create" class="btn">엔지니어 등록</a>
   <table class="list">
     <thead>
       <tr>
         <th>id</th>
-        <th>사용자 아이디</th>
+        <th>사번</th>
         <th>이름</th>
+        <th>역할</th>
+        <th>성별</th>
+        <th>전화</th>
         <th>이메일</th>
-        <th>활성화</th>
-        <th>사용자유형</th>
-        <th>학과 ID</th>
-        <th>학과명</th>
       </tr>
     </thead>
     <tbody>
-      <c:forEach var="user" items="${ users }">
-        <tr data-url="edit?id=${ user.id }">
-          <td>${ user.id }</td>
-          <td>${ user.userid }</td>
-          <td>${ user.name }</td>
-          <td>${ user.email}</td>
-          <td>${ user.email }</td>
-          <td>${ user.userType }</td>
-          <td>${ user.departmentId }</td>
-          <td>${ user.departmentName}</td>
+      <c:forEach var="engineer" items="${ engineers }">
+        <tr data-url="edit?id=${ engineer.id }">
+          <td>${ engineer.id }</td>
+          <td>${ engineer.employeeNo }</td>
+          <td>${ engineer.name}</td>
+          <td>${ engineer.role.title }</td>
+          <td>${ engineer.sex }</td>
+          <td>${ engineer.phone }</td>
+          <td>${ engineer.email }</td>
           
         </tr>
       </c:forEach>

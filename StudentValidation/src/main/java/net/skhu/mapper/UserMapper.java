@@ -12,7 +12,7 @@ import net.skhu.dto.User;
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT * FROM user")
+    @Select("select u.*,d.id,d.departmentName from user u join department d on d.id=u.departmentId")
     List<User> findAll();
 
     @Select("SELECT * FROM user WHERE userid = #{userid}")

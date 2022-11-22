@@ -13,5 +13,6 @@ public class User {
 	int departmentId;
 	int enabled;
 	String userType;
+	String departmentName;
 	
 }
