@@ -12,11 +12,15 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Category {
+public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    
+
     String name;
- 
+    String shortName;
+    String phone;
+
+    @OneToMany(mappedBy="department")
+    List<Student> students;
 }
