@@ -16,32 +16,32 @@
 <body>
 <div class="container">
   <h1>학생 목록</h1>
-  <a href="create?${pagination.queryString}" class="btn">학생등록</a>
+  <a href="create?${pagination.queryString}" class="btn">유저등록</a>
   <!-- 모든 URL의 queryString에 pagination 정보가 들어가 있어야 한다 -->
   <table class="list">
     <thead>
       <tr>
         <th>ID</th>
-        <th>학번</th>
+        <th>유저 번호</th>
         <th>이름</th>
-        <th>학과</th>
-        <th>성별</th>
-        <th>전화</th>
         <th>이메일</th>
+        <th>활성화 여부</th>
+        <th>유저 타입</th>
+        <th>소속 학과</th>
       </tr>
     </thead>
     <tbody>
-      <c:forEach var="student" items="${ students }">
-        <tr data-url="edit?id=${student.id}&${pagination.queryString}">
-          <td>${ student.id }</td>
-          <td>${ student.studentNo }</td>
-          <td>${ student.name }</td>
-          <td>${ student.departmentName }</td>
+      <c:forEach var="user" items="${ users }">
+        <tr data-url="edit?id=${user.id}&${pagination.queryString}">
+          <td>${ user.id }</td>
+          <td>${ user.userid }</td>
+          <td>${ user.name }</td>
+          <td>${ user.email }</td>
+          <td>${ user.enabled > 0 ? "활성화됨" : "비활성화됨" }</td>
+          <td>${ user.userType }</td>
+          <td>${ user.departmentName }</td>
           <!-- single valued association 속성 사용 안함
-          따라서 student.departmentName 사용 -->
-          <td>${ student.sex }</td>
-          <td>${ student.phone }</td>
-          <td>${ student.email }</td>
+          따라서 user.departmentName 사용 -->
         </tr>
       </c:forEach>
     </tbody>

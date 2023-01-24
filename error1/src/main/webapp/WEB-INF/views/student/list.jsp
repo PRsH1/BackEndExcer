@@ -17,7 +17,6 @@
 <div class="container">
   <h1>학생 목록</h1>
   <a href="create?${pagination.queryString}" class="btn">학생등록</a>
-  <!-- 모든 URL의 queryString에 pagination 정보가 들어가 있어야 한다 -->
   <table class="list">
     <thead>
       <tr>
@@ -37,8 +36,6 @@
           <td>${ student.studentNo }</td>
           <td>${ student.name }</td>
           <td>${ student.departmentName }</td>
-          <!-- single valued association 속성 사용 안함
-          따라서 student.departmentName 사용 -->
           <td>${ student.sex }</td>
           <td>${ student.phone }</td>
           <td>${ student.email }</td>
@@ -46,10 +43,8 @@
       </c:forEach>
     </tbody>
   </table>
-  <my:pagination pageSize="${ pagination.sz }" recordCount="${ pagination.recordCount }" 
+  <my:pagination pageSize="${ pagination.sz }" recordCount="${ pagination.recordCount }"
                  queryStringName="pg" />
-                 <!-- sz:페이지 크기 recordCount:학생 레코드 수
-                 페이지 수=레코드 수/ 페이지 크기 -->
 </div>
 </body>
 </html>
